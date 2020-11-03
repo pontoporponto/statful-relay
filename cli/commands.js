@@ -27,15 +27,10 @@ var start = function (configPath) {
     return new Promise(function (resolve, reject) {
         configToTry.load().then(
             function (loadedConfig) {
-                var statfulClient = new Statful(loadedConfig.statfulClient);
-                var statfulRelay = new Relay(loadedConfig, statfulClient);
+                var statfulRelay = new Relay(loadedConfig);
 
-                if (statfulClient && statfulRelay) {
+                if (statfulRelay) {
                     statfulRelay.start();
-
-                    if (loadedConfig.statfulClient.systemStats) {
-                        statfulClient.counter('application_start', 1);
-                    }
 
                     resolve(path.normalize(configPath));
                 } else {
