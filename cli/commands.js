@@ -1,5 +1,4 @@
 var Config = require('../lib/config/config.js');
-var Statful = require('statful-client');
 var Relay = require('../lib/relay');
 var fs = require('fs-extra');
 var path = require('path');
